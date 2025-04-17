@@ -1,6 +1,6 @@
 const Stats = () => {
   return (
-    <div className="container p-5">
+    <div className="container p-5 mt-5 mb-5">
       <div className="row">
         <div className="col-6">
           <h1 className="fs-2 mb-5">Trust with Confidence</h1>

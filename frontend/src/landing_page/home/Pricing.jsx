@@ -1,6 +1,6 @@
 const Pricing = () => {
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 mb-5 p-5">
       <div className="row">
         <div className="col-4">
           <h1 className="mb-3 fs-2">Unbeatable Pricing</h1>
