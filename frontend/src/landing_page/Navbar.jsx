@@ -1,58 +1,60 @@
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg border-bottom">
       <div className="container p-2">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/">
           <img src="logo.svg" alt="logo" style={{ width: "25%" }} />
-        </a>
+        </Link>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <form className="d-flex" role="search">
             <ul className="navbar-nav mb-lg-0">
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link active"
                   aria-current="page"
-                  href="#"
+                  to="/signup"
                   style={{ marginLeft: "20px" }}
                 >
                   Signup
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link active"
-                  href="#"
+                  to="/about"
                   style={{ marginLeft: "20px" }}
                 >
                   About
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link active"
-                  href="#"
+                  to="/products"
                   style={{ marginLeft: "20px" }}
                 >
                   Product
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link active"
-                  href="#"
+                  to="/pricing"
                   style={{ marginLeft: "20px" }}
                 >
                   Pricing
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link active"
-                  href="#"
+                  to="/support"
                   style={{ marginLeft: "20px" }}
                 >
                   Support
-                </a>
+                </Link>
               </li>
             </ul>
           </form>
