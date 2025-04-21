@@ -1,12 +1,17 @@
-import { useState } from "react";
+import React, { useState, useContext } from "react";
+
+import GeneralContext from "./GeneralContext";
+
 import { Tooltip, Grow } from "@mui/material";
-import { watchlist } from "../data/data";
+
 import {
   BarChartOutlined,
   KeyboardArrowDown,
   KeyboardArrowUp,
   MoreHoriz,
 } from "@mui/icons-material";
+
+import { watchlist } from "../data/data";
 
 const WatchList = () => {
   return (
@@ -34,18 +39,18 @@ const WatchList = () => {
 export default WatchList;
 
 const WatchListItem = ({ stock }) => {
-  const [showWatchListActions, setShowWatchListActions] = useState(false);
+  const [showWatchlistActions, setShowWatchlistActions] = useState(false);
 
-  const handleMouseEnter = (event) => {
-    setShowWatchListActions(true);
+  const handleMouseEnter = (e) => {
+    setShowWatchlistActions(true);
   };
 
-  const handleMouseExit = (event) => {
-    setShowWatchListActions(false);
+  const handleMouseLeave = (e) => {
+    setShowWatchlistActions(false);
   };
 
   return (
-    <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseExit}>
+    <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className="item">
         <p className={stock.isDown ? "down" : "up"}>{stock.name}</p>
         <div className="itemInfo">
@@ -53,17 +58,23 @@ const WatchListItem = ({ stock }) => {
           {stock.isDown ? (
             <KeyboardArrowDown className="down" />
           ) : (
-            <KeyboardArrowUp className="up" />
+            <KeyboardArrowUp className="down" />
           )}
           <span className="price">{stock.price}</span>
         </div>
       </div>
-      {showWatchListActions && <WatchListActions uid={stock.name} />}
+      {showWatchlistActions && <WatchListActions uid={stock.name} />}
     </li>
   );
 };
 
 const WatchListActions = ({ uid }) => {
+  const generalContext = useContext(GeneralContext);
+
+  const handleBuyClick = () => {
+    generalContext.openBuyWindow(uid);
+  };
+
   return (
     <span className="actions">
       <span>
@@ -72,6 +83,7 @@ const WatchListActions = ({ uid }) => {
           placement="top"
           arrow
           TransitionComponent={Grow}
+          onClick={handleBuyClick}
         >
           <button className="buy">Buy</button>
         </Tooltip>
